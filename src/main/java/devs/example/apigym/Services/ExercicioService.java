@@ -19,25 +19,63 @@ public class ExercicioService {
   }
 
   @Transactional
-  public Exercicio create(ExercicioDTO exercicioDTO) {
-    Optional<Exercicio> findUser = exercicioRepository.findUserbyname(exercicioDTO.nome());
-    if(!findUser.isEmpty()) throw new ExercicioAlreadyExists("Exercicio já existe");
+  public ExercicioDTO save(Exercicio exercicio) {
+    Optional<Exercicio> findUser = exercicioRepository.findByNome(exercicio.getNome());
+    if (findUser.isPresent()) {
+      throw new ExercicioAlreadyExists("Exercicio já existe");
+    }
 
-    Exercicio exercicio = new Exercicio(exercicioDTO.nome(),
-        exercicioDTO.cargaAquecimento(), exercicioDTO.repsAquecimento(), exercicioDTO.cargaFeeder(),
-        exercicioDTO.repsFeeder(), exercicioDTO.cargaTrabalho(), exercicioDTO.repsTrabalho(),
-        exercicioDTO.grupoMuscular());
-
-    return exercicio;
+    Exercicio exercicioCreated = Exercicio.builder()
+        .nome(exercicio.getNome())
+        .grupoMuscular(exercicio.getGrupoMuscular())
+        .cargaAquecimento(exercicio.getCargaAquecimento())
+        .repsAquecimento(exercicio.getRepsAquecimento())
+        .cargaFeeder(exercicio.getCargaFeeder())
+        .repsFeeder(exercicio.getRepsFeeder())
+        .cargaTrabalho(exercicio.getCargaTrabalho())
+        .repsTrabalho(exercicio.getRepsTrabalho())
+        .build();
+    ExercicioDTO exercicioDTO = new ExercicioDTO(exercicioCreated);
+    exercicioRepository.save(exercicioCreated);
+    return exercicioDTO;
   }
 
   @Transactional
   public void delet(String nome) {
-    Optional<Exercicio> findUser = exercicioRepository.findUserbyname(nome);
+    exercicioRepository.delete(search(nome));
+  }
 
-    if (findUser.isEmpty()) throw new ExercicioNotFound("Exercicio não encontrado");
-    Exercicio exercicio = findUser.get();
-    exercicioRepository.delete(exercicio);
+  @Transactional
+  public Exercicio search(String nome) {
+    Optional<Exercicio> findUser = exercicioRepository.findByNome(nome);
+    if (findUser.isEmpty()) {
+      throw new ExercicioNotFound("Exercicio não encontrado");
+    }
+
+    Exercicio exercicioEncontrado = findUser.get();
+
+    return exercicioEncontrado;
+  }
+
+  @Transactional
+  public ExercicioDTO alter(String nome, Exercicio exercicio) {
+    Exercicio exercicioAlter = search(nome);
+
+    Exercicio exercicioAtualizado = Exercicio.builder()
+        .id(exercicioAlter.getId())
+        .nome(exercicio.getNome())
+        .grupoMuscular(exercicio.getGrupoMuscular())
+        .cargaAquecimento(exercicio.getCargaAquecimento())
+        .repsAquecimento(exercicio.getRepsAquecimento())
+        .cargaFeeder(exercicio.getCargaFeeder())
+        .repsFeeder(exercicio.getRepsFeeder())
+        .cargaTrabalho(exercicio.getCargaTrabalho())
+        .repsTrabalho(exercicio.getRepsTrabalho())
+        .build();
+    ExercicioDTO exercicioDTO = new ExercicioDTO(exercicioAtualizado);
+    exercicioRepository.save(exercicioAtualizado);
+    return exercicioDTO;
+
   }
 
 }

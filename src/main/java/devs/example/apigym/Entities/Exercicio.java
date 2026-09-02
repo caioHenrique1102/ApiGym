@@ -1,13 +1,24 @@
 package devs.example.apigym.Entities;
 
+import devs.example.apigym.DTOS.ExercicioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "exercicio")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Exercicio {
 
   @Id
@@ -23,90 +34,24 @@ public class Exercicio {
   private int repsTrabalho;
 
 
-  public Exercicio( String nome, int cargaAquecimento, int repsAquecimento, int cargaFeeder,
-      int repsFeeder, int cargaTrabalho, int repsTrabalho, String grupoMuscular) {
+  public Exercicio(String nome,
+      String grupoMuscular,
+      int cargaAquecimento,
+      int repsAquecimento,
+      int cargaFeeder,
+      int repsFeeder,
+      int cargaTrabalho,
+      int repsTrabalho, ExercicioDTO exercicioDTO) {
+
     this.nome = nome;
+    this.grupoMuscular = grupoMuscular;
     this.cargaAquecimento = cargaAquecimento;
     this.repsAquecimento = repsAquecimento;
     this.cargaFeeder = cargaFeeder;
     this.repsFeeder = repsFeeder;
     this.cargaTrabalho = cargaTrabalho;
     this.repsTrabalho = repsTrabalho;
-    this.grupoMuscular = grupoMuscular;
   }
 
-  public Exercicio() {
-  }
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public int getCargaAquecimento() {
-    return cargaAquecimento;
-  }
-
-  public void setCargaAquecimento(int cargaAquecimento) {
-    this.cargaAquecimento = cargaAquecimento;
-  }
-
-  public int getRepsAquecimento() {
-    return repsAquecimento;
-  }
-
-  public void setRepsAquecimento(int repsAquecimento) {
-    this.repsAquecimento = repsAquecimento;
-  }
-
-  public int getCargaFeeder() {
-    return cargaFeeder;
-  }
-
-  public void setCargaFeeder(int cargaFeeder) {
-    this.cargaFeeder = cargaFeeder;
-  }
-
-  public int getRepsFeeder() {
-    return repsFeeder;
-  }
-
-  public void setRepsFeeder(int repsFeeder) {
-    this.repsFeeder = repsFeeder;
-  }
-
-  public int getCargaTrabalho() {
-    return cargaTrabalho;
-  }
-
-  public void setCargaTrabalho(int cargaTrabalho) {
-    this.cargaTrabalho = cargaTrabalho;
-  }
-
-  public int getRepsTrabalho() {
-    return repsTrabalho;
-  }
-
-  public void setRepsTrabalho(int repsTrabalho) {
-    this.repsTrabalho = repsTrabalho;
-  }
-
-  public String getGrupoMuscular() {
-    return grupoMuscular;
-  }
-
-  public void setGrupoMuscular(String grupoMuscular) {
-    this.grupoMuscular = grupoMuscular;
-  }
 
 }

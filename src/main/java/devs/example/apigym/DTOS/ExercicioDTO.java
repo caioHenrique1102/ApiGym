@@ -1,5 +1,7 @@
 package devs.example.apigym.DTOS;
 
+import devs.example.apigym.Entities.Exercicio;
+
 public record ExercicioDTO(String nome,
                            String grupoMuscular,
                            int cargaAquecimento,
@@ -9,4 +11,14 @@ public record ExercicioDTO(String nome,
                            int cargaTrabalho,
                            int repsTrabalho) {
 
+  public ExercicioDTO(Exercicio exercicio){
+    this(exercicio.getNome(),
+    exercicio.getGrupoMuscular(),
+    exercicio.getCargaAquecimento(),
+    exercicio.getRepsAquecimento(),
+    exercicio.getCargaFeeder(),
+    exercicio.getRepsFeeder(),
+    exercicio.getCargaTrabalho(),
+    exercicio.getRepsTrabalho());
+  }
 }
