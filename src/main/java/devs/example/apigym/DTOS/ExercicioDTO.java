@@ -1,6 +1,6 @@
 package devs.example.apigym.DTOS;
 
-import devs.example.apigym.Entities.Exercicio;
+import devs.example.apigym.Model.Entities.Exercicio;
 
 public record ExercicioDTO(String nome,
                            String grupoMuscular,

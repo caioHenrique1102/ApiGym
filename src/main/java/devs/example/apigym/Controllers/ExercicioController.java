@@ -1,10 +1,11 @@
 package devs.example.apigym.Controllers;
 
 import devs.example.apigym.DTOS.ExercicioDTO;
-import devs.example.apigym.Entities.Exercicio;
+import devs.example.apigym.Model.Entities.Exercicio;
 import devs.example.apigym.Services.ExercicioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/exercicio")
+@CrossOrigin
 public class ExercicioController {
 
   private final ExercicioService exercicioService;

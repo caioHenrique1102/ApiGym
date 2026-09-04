@@ -1,7 +1,6 @@
-package devs.example.apigym.Repositories;
+package devs.example.apigym.Model.Repositorys;
 
-import devs.example.apigym.DTOS.ExercicioDTO;
-import devs.example.apigym.Entities.Exercicio;
+import devs.example.apigym.Model.Entities.Exercicio;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

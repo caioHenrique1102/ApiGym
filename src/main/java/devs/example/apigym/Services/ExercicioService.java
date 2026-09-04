@@ -1,10 +1,10 @@
 package devs.example.apigym.Services;
 
 import devs.example.apigym.DTOS.ExercicioDTO;
-import devs.example.apigym.Entities.Exercicio;
+import devs.example.apigym.Model.Entities.Exercicio;
 import devs.example.apigym.Exception.ExercicioAlreadyExists;
 import devs.example.apigym.Exception.ExercicioNotFound;
-import devs.example.apigym.Repositories.ExercicioRepository;
+import devs.example.apigym.Model.Repositorys.ExercicioRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
