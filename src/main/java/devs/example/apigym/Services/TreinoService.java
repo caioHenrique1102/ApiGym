@@ -1,8 +1,8 @@
 package devs.example.apigym.Services;
 
 import devs.example.apigym.DTOS.TreinoDTO;
-import devs.example.apigym.Exception.TreinoAlreadyExists;
-import devs.example.apigym.Exception.TreinoNotFound;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.TreinoAlreadyExists;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.TreinoNotFound;
 import devs.example.apigym.Model.Entities.Exercicio;
 import devs.example.apigym.Model.Entities.Treino;
 import devs.example.apigym.Model.Repositorys.TreinoRepository;

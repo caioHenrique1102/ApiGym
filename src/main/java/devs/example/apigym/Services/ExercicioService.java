@@ -2,8 +2,8 @@ package devs.example.apigym.Services;
 
 import devs.example.apigym.DTOS.ExercicioDTO;
 import devs.example.apigym.Model.Entities.Exercicio;
-import devs.example.apigym.Exception.ExercicioAlreadyExists;
-import devs.example.apigym.Exception.ExercicioNotFound;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.ExercicioAlreadyExists;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.ExercicioNotFound;
 import devs.example.apigym.Model.Repositorys.ExercicioRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;

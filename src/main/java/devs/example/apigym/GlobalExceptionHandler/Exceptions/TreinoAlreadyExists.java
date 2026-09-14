@@ -1,4 +1,4 @@
-package devs.example.apigym.Exception;
+package devs.example.apigym.GlobalExceptionHandler.Exceptions;
 
 public class TreinoAlreadyExists extends RuntimeException {
 
