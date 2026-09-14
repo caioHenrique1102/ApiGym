@@ -7,16 +7,15 @@ import devs.example.apigym.Exception.ExercicioNotFound;
 import devs.example.apigym.Model.Repositorys.ExercicioRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ExercicioService {
 
   private final ExercicioRepository exercicioRepository;
 
-  public ExercicioService(ExercicioRepository exercicioRepository) {
-    this.exercicioRepository = exercicioRepository;
-  }
 
   @Transactional
   public ExercicioDTO save(Exercicio exercicio) {

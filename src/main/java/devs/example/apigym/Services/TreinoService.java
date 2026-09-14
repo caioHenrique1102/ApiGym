@@ -8,18 +8,15 @@ import devs.example.apigym.Model.Entities.Treino;
 import devs.example.apigym.Model.Repositorys.TreinoRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class TreinoService {
 
 	private final TreinoRepository treinoRepository;
 	private final ExercicioService exercicioService;
-
-	public TreinoService(TreinoRepository treinoRepository, ExercicioService exercicioService) {
-		this.treinoRepository = treinoRepository;
-		this.exercicioService = exercicioService;
-	}
 
 	@Transactional
 	public TreinoDTO cadastrarExercicio(String nomeTreino, String nomeExercicio) {

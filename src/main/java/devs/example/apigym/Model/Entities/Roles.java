@@ -1,42 +1,38 @@
 package devs.example.apigym.Model.Entities;
 
-import devs.example.apigym.Enums.DiasSemana;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.AnyDiscriminatorImplicitValues.Strategy;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-@Table(name = "tb_treino")
+@Table(name = "tb_roles")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Treino {
+public class Roles implements GrantedAuthority {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  private DiasSemana diasSemana;
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	@Column(nullable = false)
-  private String nome;
-  @OneToMany
-  private List<Exercicio> exercicios;
+	private String nome;
 
-
-	public Treino(DiasSemana diasSemana, String nome){
-		this.diasSemana =diasSemana;
-		this.nome = nome;
+	@Override
+	public @Nullable String getAuthority() {
+		return nome;
 	}
-
 }
