@@ -6,16 +6,18 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.util.Date;
 import javax.crypto.SecretKey;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
+
 public class TokenProvider {
 
 	@Value("${jwt.expiration}")
-	private long expirationTime;
+	private Long expirationTime;
 
 	@Value("${jwt.key}")
 	private String key;
