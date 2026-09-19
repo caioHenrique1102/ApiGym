@@ -5,6 +5,8 @@ import devs.example.apigym.GlobalExceptionHandler.Exceptions.ExercicioNotFound;
 import devs.example.apigym.GlobalExceptionHandler.Exceptions.TreinoAlreadyExists;
 import devs.example.apigym.GlobalExceptionHandler.Exceptions.TreinoNotFound;
 import devs.example.apigym.GlobalExceptionHandler.Exceptions.UserAlreadyExists;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.UserNotFound;
+import devs.example.apigym.GlobalExceptionHandler.Exceptions.UserNotLinked;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -43,6 +45,18 @@ public class GlobalException {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> ExceptionHandler(Exception ex) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+	}
+
+	@ExceptionHandler(UserNotFound.class)
+	public ResponseEntity<String> UserNotFoundHandler(
+			UserNotFound userNotFound) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userNotFound.getMessage());
+	}
+
+	@ExceptionHandler(UserNotLinked.class)
+	public ResponseEntity<String> UserNotLinkedHandler(
+			UserNotLinked userNotLinked) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userNotLinked.getMessage());
 	}
 
 

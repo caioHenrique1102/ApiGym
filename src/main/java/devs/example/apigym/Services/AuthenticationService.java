@@ -53,7 +53,7 @@ public class AuthenticationService {
 		return registerRequestDto;
 	}
 
-	public TokenReponseDTO login(LoginRequestDto loginRequestDto) throws Exception{
+	public TokenReponseDTO login(LoginRequestDto loginRequestDto) {
 
 		try {
 			 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.email(), loginRequestDto.senha()));
